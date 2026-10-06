@@ -8,12 +8,14 @@ export default function Tarjeta() {
     <div className="bg-gray-100 flex-col flex items-center gap-3 p-7 justify-center w-120 h-120 rounded-2xl">
      
       <img src="https://img.a.transfermarkt.technology/portrait/big/623521-1696862713.jpg?lm=4711" alt="" className="rounded-full w-50 h-50" />
-      <h1 className="font-bold text-3xl">Jesus</h1>
-      <div className='bg-blue-600 flex justify-center items-center w-30 h-10 rounded-2xl hover:bg-blue-400 '>
-     
-        <h1 className="text-cyan-50 flex justify-center ">Seguir</h1>
-      </div>
+    <h2 className="font-bold text-3xl">Jesus</h2>
+    
+      <button className='bg-blue-600 flex justify-center items-center w-30 h-10 rounded-2xl hover:bg-blue-400 '>
+        Seguir
+      </button>
     </div>
+    
+   
     </div>
 
   )
