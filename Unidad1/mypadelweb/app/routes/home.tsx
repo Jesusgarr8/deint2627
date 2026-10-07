@@ -1,13 +1,10 @@
-import type { Route } from "./+types/home";
-
-
-export function meta({}: Route.MetaArgs) {
-  return [
-    { title: "New React Router App" },
-    { name: "description", content: "Welcome to React Router!" },
-  ];
-}
+import BrandList from "~/components/BrandList";
 
 export default function Home() {
-  return <div />;
+  return (
+    <main className="  w-full h-full mx-auto max-w-7xl p-6">
+      <h1 className="text-2xl font-bold">Marcas de palas</h1>
+      <BrandList></BrandList>
+    </main>
+  );
 }
