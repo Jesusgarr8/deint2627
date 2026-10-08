@@ -1,6 +1,6 @@
 import React from 'react'
 
-interface IProps {
+export interface IBrand {
     id: number,
     name: string,
     logo: string,
