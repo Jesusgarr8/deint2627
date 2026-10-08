@@ -21,7 +21,7 @@ export default function Brand({ brand }: IBrandListProps) {
       <div className='flex m-4 gap-4'>
         <img src={brand.logo} alt="logo" className='border rounded-2xl border-gray-200  w-30 h-15 object-contain ' />
         <div className='flex flex-col '>
-          <h1 className='font-bold text-gray-900'>{brand.name}</h1>
+          <h1 className='font-semibold  text-gray-900  text-lg'>{brand.name}</h1>
           <p className='text-gray-500'>{brand.racketCount} palas - desde {brand.minPrice}€</p>
         </div>
       </div>
