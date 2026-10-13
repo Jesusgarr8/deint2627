@@ -1,5 +1,6 @@
 import { useState } from "react";
 import BrandList from "~/components/BrandList";
+import NoResults from "~/components/NoResults";
 import SearchBar from "~/components/SearchBar";
 import { brands } from "~/data/brands";
 import type { IBrand } from "~/types/interfaces";
@@ -7,12 +8,22 @@ export default function Home() {
   
 const [query, setQuery] = useState("");
 <SearchBar query={query} onQueryChange={setQuery} />
-console.log(query);
+
+
+const visibleBrands = brands.filter((brand) =>
+brand.name.toLowerCase().trim().includes(query.toLowerCase().trim())
+);
+
+const onReset = () => setQuery("");
+
   return (
     <main className="  w-full h-full mx-auto max-w-7xl p-6">
       <h1 className="text-2xl font-bold">Marcas de palas</h1>
      <SearchBar query={query} onQueryChange={setQuery} />
-     <BrandList brands={brands} />
+      <p className="text-gray-500" aria-live="polite">Mostrando {visibleBrands.length} de 12 marcas</p>
+      
+     {visibleBrands.length > 0 ? <BrandList visibleBrands={visibleBrands}  /> : <NoResults onReset={setQuery}></NoResults>}
+   
     </main>
   );
 }
