@@ -14,7 +14,7 @@ const visibleBrands = brands.filter((brand) =>
 brand.name.toLowerCase().trim().includes(query.toLowerCase().trim())
 );
 
-const onReset = () => setQuery("");
+
 
   return (
     <main className="  w-full h-full mx-auto max-w-7xl p-6">
