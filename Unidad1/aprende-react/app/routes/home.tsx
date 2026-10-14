@@ -5,93 +5,32 @@ import Button from "~/components/Button";
 import Product from "~/components/Product";
 import Food from "~/components/Food";
 import { useState } from "react";
+import { Link } from "react-router";
+
+export function meta(){
+  return [
+    {title: "Home -aprende-react"}
+  ]
+}
 
 export default function Home() {
 
-  const isTeacher = false
+  return<> 
+  <div className="flex flex-col items-center gap-6 px-6 py-16 text-center">
 
-  const foods = [
-    {
-      id: 1,
-      nombre: "Paella",
-      imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTT06FaFgsZxX6j3l5YQUCzq727CTgXvyPQQH8XLljKsAEUnfhBro0ErHM&s=10"
-    },
-    {
-      id: 2,
-      nombre: "Tortilla de Patatas",
-      imagen: "https://www.recetasderechupete.com/wp-content/uploads/2020/11/Tortilla-de-patatas-4-1200x828.jpg"
-    },
-    {
-      id: 3,
-      nombre: "Gazpacho",
-      imagen: "https://i.blogs.es/e64620/gazpacho/840_560.jpg"
-    },
-    {
-      id: 4,
-      nombre: "Patatas Bravas",
-      imagen: "https://www.goya.com/wp-content/uploads/2023/10/spicy-potatoes.jpg"
-    },
-    {
-      id: 5,
-      nombre: "Fabada Asturiana",
-      imagen: "https://imag.bonviveur.com/fabada-asturiana.jpg"
-    }
-  ];
+  <span className="rounded-full  bg-blue-100 px-3 py-1 text-sm  font-medium  text-blue-800">Tienda de informatica</span>
 
-  //let number = 0
+  <h1 className="text-4xl font-bold text-gray-900">¡Investiga nuestros productos!</h1>
 
-const [number, setNumber] = useState(0);
+  <p className="text-lg text-gray-600">Ordenadores, monitores  y perifericos para estudiar y trabajar. 
+    Elige un producto y consulta su ficha</p>
 
-  const addOne = () => {
-    setNumber(number +1)
-    console.log(number)
-  }
-  return (
+    <div className="flex gap-4">
+      <Link to="/productos" className="rounded-lg bg-blue-800 px-5 py-3 font-semibold  text-white hover:bg-blue-950">Ver productos</Link>
+      <Link to="/about" className="rounded-lg bg-gray-300 px-5 py-3 font-semibold  hover:bg-gray-700">Sobre el proyecto</Link>
 
-
-    <div className=" ">
-
-
-
-      <Button styles="text-white bg-blue-800 cursor-pointer" title="Home"
-        active={true} onClickButton={() => alert("Home")}></Button>
-
-      <Button styles="text-white bg-red-800 cursor-pointer" title="Configuracion"
-        active={true} onClickButton={() => alert("Home")}></Button>
-
-
-      <div className="flex flex-row gap-3 p-2">
-        <Product title="Zapatillas" desc="Deportivas nike" price={120}></Product>
-        <Product title="padel" desc="adidas" price={120}></Product>
-      </div>
-      <h2 className="text-4xl text-green-800">Configuracion moodle</h2>
-      <ul className="list-inside list-disc">
-        <li>LogOut</li>
-        <li>Modulos</li>
-        {isTeacher && <li>Alumnos</li>}
-      </ul>
-
-
-      <h2 className="text-4xl text-green-800">Menu del dia</h2>
-      <div className="flex felx-row justify-around gap-1">
-        {
-          foods.map((f) => {
-            return (
-              <Food key={f.id} nombre={f.nombre} imagen={f.imagen} ></Food>
-            )
-
-          })
-        }
-
-        <Button styles="text-white bg-green-600" title={`contador: ${number}`}
-          active={true} onClickButton={addOne}>
-
-        </Button>
-      </div>
     </div>
 
-
-
-
-  );
+  </div> 
+  </>
 }
