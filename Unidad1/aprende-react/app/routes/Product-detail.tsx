@@ -9,12 +9,13 @@ export default function ProductDetail({params} : Route.ComponentProps) {
   const productoFilter = products.find((p) =>  p.id == idProducto);
 
   if(!productoFilter){
-    return  {
+    return <div>
+      {
         <h1>Producto no encontrado</h1>
     }
-    
+    </div>  
   }
     return (
-    <div>Product-detai: {productoFilter?.title}</div>
+    <div>Product-detail: {productoFilter?.title}</div>
   )
 }
