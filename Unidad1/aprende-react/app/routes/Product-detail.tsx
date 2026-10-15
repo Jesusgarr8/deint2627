@@ -1,6 +1,7 @@
 import React from 'react'
 import type { Route } from './+types/Product-detail'
 import { products } from '~/data/products'
+import { Link } from 'react-router';
 
 export default function ProductDetail({params} : Route.ComponentProps) {
   
@@ -11,11 +12,17 @@ export default function ProductDetail({params} : Route.ComponentProps) {
   if(!productoFilter){
     return <div>
       {
-        <h1>Producto no encontrado</h1>
+        <div className='p-6'>
+        <h1 className='text-3xl font-bold'>Producto no encontrado</h1>
+        <Link to="/productos" className="text-blue-800underline">Volver a los productos</Link>
+        </div>
     }
     </div>  
   }
     return (
-    <div>Product-detail: {productoFilter?.title}</div>
+    <div className='mx-auto flex flex-col gap-4 p-6'>
+      <Link to="/productos" className='text-blue-800 underline'>Volver a los productos</Link>
+
+    </div>
   )
 }

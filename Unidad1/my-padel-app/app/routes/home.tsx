@@ -7,7 +7,7 @@ import type { IBrand } from "~/types/interfaces";
 export default function Home() {
   
 const [query, setQuery] = useState("");
-<SearchBar query={query} onQueryChange={setQuery} />
+//<SearchBar query={query} onQueryChange={setQuery} />
 
 
 const visibleBrands = brands.filter((brand) =>
