@@ -1,6 +1,7 @@
 import { useState } from "react";
 import BrandList from "~/components/BrandList";
 import NoResults from "~/components/NoResults";
+import RacketList from "~/components/RacketList";
 import SearchBar from "~/components/SearchBar";
 import { brands } from "~/data/brands";
 import type { IBrand } from "~/types/interfaces";
@@ -24,6 +25,7 @@ brand.name.toLowerCase().trim().includes(query.toLowerCase().trim())
       
      {visibleBrands.length > 0 ? <BrandList visibleBrands={visibleBrands}  /> : <NoResults onReset={setQuery}></NoResults>}
    
+  
     </main>
   );
 }

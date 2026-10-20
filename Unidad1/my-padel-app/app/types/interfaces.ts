@@ -10,6 +10,18 @@ export interface IBrand {
   playStyle: string,
   flagshipModel: string
 }
+
+export interface IRacket {
+  id :string,
+  brandId : number,
+  model: string,
+  image: string,
+  score : number,
+  shape: string,
+  playStyle: string,
+  level: string,
+  price: number
+} 
 /*
 export default function interfaces() {
   return (

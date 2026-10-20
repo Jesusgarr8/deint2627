@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router';
 import type { IBrand } from '~/types/interfaces';
 
 
@@ -17,6 +18,7 @@ export default function Brand({ brand }: IBrandListProps) {
   }
 
   return (
+    <Link to={`marcas/${brand.id}`}>
     <div className='flex flex-col border border-gray-200 rounded-2xl p-5 bg-white gap-4 group hover:shadow-lg hover:border-blue-600'>
       <div className='flex m-4 gap-4'>
         <img src={brand.logo} alt="logo" className='border rounded-2xl border-gray-200  w-30 h-15 object-contain ' />
@@ -55,5 +57,6 @@ export default function Brand({ brand }: IBrandListProps) {
 
       </div>
     </div>
+    </Link>
   )
 }
