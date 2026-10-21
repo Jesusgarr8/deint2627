@@ -23,7 +23,7 @@ brand.name.toLowerCase().trim().includes(query.toLowerCase().trim())
      <SearchBar query={query} onQueryChange={setQuery} />
       <p className="text-gray-500" aria-live="polite">Mostrando {visibleBrands.length} de 12 marcas</p>
       
-     {visibleBrands.length > 0 ? <BrandList visibleBrands={visibleBrands}  /> : <NoResults onReset={setQuery}></NoResults>}
+     {visibleBrands.length > 0 ? <BrandList visibleBrands={visibleBrands}  /> : <NoResults onReset={setQuery} message="Ninguna marca coincide con tu búsqueda..." resetLabel="Ver todas las marcas"></NoResults>}
    
   
     </main>

@@ -15,7 +15,7 @@ export default function FilterSelect({id, label, options, value, onChange}: IFil
         className='rounded-full border border-gray-300 bg-white px-4 py-2 focus:border-blue-700'>
               <option value="">Todas</option>
               {options.map((opcion) => (
-                <option key={opcion} value={value}>{opcion}</option>
+                <option key={opcion} value={opcion}>{opcion}</option>
               )
             )}
             
