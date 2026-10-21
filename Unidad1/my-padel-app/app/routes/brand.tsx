@@ -1,11 +1,13 @@
-import React from 'react'
+import React, { useState } from 'react'
 import type { Route } from './+types/brand'
 import { brands } from '~/data/brands'
 import { Link } from 'react-router'
 import RacketList from '~/components/RacketList'
 import { rackets } from '~/data/rackets'
+import FilterSelect from '~/components/FilterSelect'
 
 
+const noFilters = { shape: "", playStyle: "", level: "" };
 
 export function meta ({params}: Route.MetaArgs){
   const brand = brands.find((b) => b.id === Number(params.brandId))
@@ -20,6 +22,7 @@ export function meta ({params}: Route.MetaArgs){
 
 
 export default function brand  ({params}: Route.MetaArgs){
+  const [filters, setFilters] = useState(noFilters);
   const brand = brands.find((b) => b.id === Number(params.brandId))
 
   const visibleRackets = rackets.filter(
@@ -43,6 +46,11 @@ export default function brand  ({params}: Route.MetaArgs){
         <div className='flex flex-col '>
           <h1 className='text-2xl font-bold  text-gray-900 '>{brand.name}</h1>
           <p className='text-gray-500'>{brand.racketCount} palas - desde {brand.minPrice}€</p>
+          <div className='flex gap-4'>
+  <FilterSelect id="shape" label="Forma" options={["Redonda", "Lágrima", "Diamante"]} value={filters.shape} onChange={(value) => setFilters({ ...filters, shape: value })} />
+  <FilterSelect id="play-style" label="Estilo de juego" options={["Control", "Polivalente", "Potencia"]} value={filters.playStyle} onChange={(value) => setFilters({ ...filters, playStyle: value })} />
+  <FilterSelect id="level" label="Nivel" options={["Iniciación", "Intermedio", "Avanzado", "Profesional"]} value={filters.level} onChange={(value) => setFilters({ ...filters, level: value })}/>
+    </div>
            <RacketList visibleRackets={visibleRackets} />
         </div>
       </div>
