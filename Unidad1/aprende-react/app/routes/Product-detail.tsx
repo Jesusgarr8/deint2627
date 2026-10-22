@@ -21,7 +21,7 @@ export default function ProductDetail({params} : Route.ComponentProps) {
   }
     return (
     <div className='mx-auto flex flex-col gap-4 p-6'>
-      <Link to="/productos" className='text-blue-800 underline'>Volver a los productos</Link>
+      <Link to="/productos" className='text-primario underline'>Volver a los productos</Link>
 
     </div>
   )

@@ -1,13 +1,14 @@
 import React from 'react'
 import { NavLink } from 'react-router'
+import ThemeToggle from './ThemeToggle'
 
-const navLinkStyles  =  ({isActive}: {isActive: boolean}) => (isActive ? "font-bold text-blue-800  underline" : "text-gray-600" )
+const navLinkStyles  =  ({isActive}: {isActive: boolean}) => (isActive ? "font-bold text-primario  underline" : "text-letra-suave" )
 
 
     
 export default function Header() {
   return (
-   <header className='border-b border-gray-200'>
+   <header className='border-b border-border  flex justify-between'>
     <nav className='flex justify-center gap-6 p-4'>
             <NavLink to="/" 
             className={
@@ -32,7 +33,7 @@ export default function Header() {
             </NavLink>
 
     </nav>
-
+                    <ThemeToggle/>
 
    </header>
   )
