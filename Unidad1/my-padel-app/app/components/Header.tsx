@@ -9,11 +9,11 @@ const navClass = ({isActive}  : {isActive : boolean}) =>
   
   return (
     <div>
-      <div className='flex justify-between bg-white  border border-gray-500'>
+      <div className='flex justify-between bg-color-fondo  border border-color-borde'>
        
           <Link to="/"  className='flex  m-4'>
           <img src={logo} alt="logo" className='w-20 h-20 rounded-full' />
-          <h1 className='m-4 font-bold text-blue-800 text-2xl'>My padel web</h1>
+          <h1 className='m-4 font-bold text-primario text-2xl'>My padel web</h1>
           </Link>
        
         <div className='flex gap-3 m-8'>

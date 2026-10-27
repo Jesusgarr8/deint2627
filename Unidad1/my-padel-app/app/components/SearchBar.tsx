@@ -20,7 +20,7 @@ export default function SearchBar({query, onQueryChange}: SearchBarProps) {
         placeholder=' Buscar marca...'
         value={query}
         onChange={(e) => onQueryChange(e.target.value)}  
-        className='pl-10 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-blue-600' />
+        className='pl-10 rounded-full border border-borde focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-primario' />
   
         </div>
     </div>

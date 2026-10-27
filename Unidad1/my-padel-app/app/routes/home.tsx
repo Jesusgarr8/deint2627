@@ -21,7 +21,7 @@ brand.name.toLowerCase().trim().includes(query.toLowerCase().trim())
     <main className="  w-full h-full mx-auto max-w-7xl p-6">
       <h1 className="text-2xl font-bold">Marcas de palas</h1>
      <SearchBar query={query} onQueryChange={setQuery} />
-      <p className="text-gray-500" aria-live="polite">Mostrando {visibleBrands.length} de 12 marcas</p>
+      <p className="text-letra-suave" aria-live="polite">Mostrando {visibleBrands.length} de 12 marcas</p>
       
      {visibleBrands.length > 0 ? <BrandList visibleBrands={visibleBrands}  /> : <NoResults onReset={setQuery} message="Ninguna marca coincide con tu búsqueda..." resetLabel="Ver todas las marcas"></NoResults>}
    

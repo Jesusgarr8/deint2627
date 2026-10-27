@@ -7,9 +7,9 @@ export interface IFilterProps{
 export default function SortSelect({value, onChange}: IFilterProps) {
   return (
     <div className='flex flex-col gap-1'>
-        <label htmlFor="sort" className='text-sm text-gray-500'>Ordenar por</label>
+        <label htmlFor="sort" className='text-sm text-letra-suave'>Ordenar por</label>
         <select id="Ordenar por"  value={value} onChange={(e) => onChange(e.target.value)}
-        className='rounded-full border border-gray-300 bg-white px-4 py-2 focus:border-blue-700'>
+        className='rounded-full border border-borde bg-superficie px-4 py-2 focus:border-primario'>
             
             <option value="score">Mejor puntuación</option>
             <option value="price-asc">Precio: de menor a mayor</option>

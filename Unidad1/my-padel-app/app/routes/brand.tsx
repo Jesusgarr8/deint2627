@@ -58,8 +58,8 @@ export default function brand({ params }: Route.MetaArgs) {
       <div className=''>
         <h1>No encontramos esa marca</h1>
         <p>Puede que la direccion  introducida no sea correcta</p>
-        <button className='rounded-full border border-gray-300 p-4'>
-          <Link to="/" className='text-blue-800 font-medium'>Volver a las marcas</Link>
+        <button className='rounded-full border border-borde p-4'>
+          <Link to="/" className='text-primario font-medium'>Volver a las marcas</Link>
         </button>
       </div>
     )
@@ -68,17 +68,17 @@ export default function brand({ params }: Route.MetaArgs) {
   return (
     <div className='flex m-4 gap-4'>
 
-      <img src={brand.logo} alt="logo" className='border rounded-2xl border-gray-200  size-20 object-contain ' />
+      <img src={brand.logo} alt="logo" className='border rounded-2xl border-borde  size-20 object-contain ' />
       <div className='flex flex-col '>
-        <h1 className='text-2xl font-bold  text-gray-900 '>{brand.name}</h1>
-        <p className='text-gray-500'>{brand.racketCount} palas - desde {brand.minPrice}€</p>
+        <h1 className='text-2xl font-bold  text-letra '>{brand.name}</h1>
+        <p className='text-letra-suave'>{brand.racketCount} palas - desde {brand.minPrice}€</p>
         <div className='grid grid-cols-4 gap-4 w-full'>
           <FilterSelect id="shape" label="Forma" options={["Redonda", "Lágrima", "Diamante"]} value={filters.shape} onChange={(value) => setFilters({ ...filters, shape: value })} />
           <FilterSelect id="play-style" label="Estilo de juego" options={["Control", "Polivalente", "Potencia"]} value={filters.playStyle} onChange={(value) => setFilters({ ...filters, playStyle: value })} />
           <FilterSelect id="level" label="Nivel" options={["Iniciación", "Intermedio", "Avanzado", "Profesional"]} value={filters.level} onChange={(value) => setFilters({ ...filters, level: value })} />
           <SortSelect value={sortBy} onChange={setSortBy} />
         </div>
-        <p className="text-gray-500 gap-4 p-4" aria-live="polite">Mostrando {visibleRackets.length} de {brandRacket.length} palas</p>
+        <p className="text-letra-suave gap-4 p-4" aria-live="polite">Mostrando {visibleRackets.length} de {brandRacket.length} palas</p>
         {visibleRackets.length > 0 ? <RacketList visibleRackets={sortedRackets} /> : <NoResults onReset={() => setFilters(noFilters)} message="Ninguna pala de esta marca cumple los filtros" resetLabel="Quitar los filtros"></NoResults>}
       </div>
 
