@@ -18,10 +18,10 @@ export default function Brand({ brand }: IBrandListProps) {
   }
 
   return (
-    <Link to={`marcas/${brand.id}`}>
-    <div className='flex flex-col border border-borde rounded-2xl p-5 bg-superficie gap-4 group hover:shadow-lg hover:border-primario'>
+    <Link to={`marcas/${brand.id}`}className="h-full flex flex-col">
+  <div className='h-full flex flex-col justify-between border border-borde rounded-2xl p-5 bg-superficie gap-4 group hover:shadow-lg hover:border-primario'>
       <div className='flex m-4 gap-4'>
-        <img src={brand.logo} alt="logo" className='border rounded-2xl border-borde  w-30 h-15 object-contain ' />
+        <img src={brand.logo} alt="logo" className='border rounded-2xl border-borde  w-30 h-15 object-contain bg-foto' />
         <div className='flex flex-col '>
           <h1 className='font-semibold  text-letra  text-lg'>{brand.name}</h1>
           <p className='text-letra-suave'>{brand.racketCount} palas - desde {brand.minPrice}€</p>

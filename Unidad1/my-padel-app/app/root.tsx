@@ -23,13 +23,21 @@ export const links: Route.LinksFunction = () => [
     href: "https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Space+Grotesk:wght@600;700&display=swap",
   },
 ];
+const scriptTema = `
+  const tema = localStorage.getItem("tema");
+  const sistemaOscuro = window.matchMedia("(prefers-color-scheme: dark)").matches;
+  if (tema === "oscuro" || (!tema && sistemaOscuro)) {
+    document.documentElement.classList.add("dark");
+  }
+`;
 
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="es" suppressHydrationWarning>
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <script dangerouslySetInnerHTML={{ __html: scriptTema }} />
         <Meta />
         <Links />
       </head>
