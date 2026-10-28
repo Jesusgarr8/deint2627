@@ -1,0 +1,43 @@
+/* TEMA DE MY RACE */
+
+/* El prefijo dark: se activa cuando <html> tiene la clase "dark" */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ---------- MODO CLARO (valores por defecto) ---------- */
+@theme {
+  /* 1. Colores */
+  --color-primario: var(--color-orange-600);
+  --color-primario-texto: var(--color-white);
+  --color-fondo: var(--color-slate-100);
+  --color-superficie: var(--color-white);
+  --color-letra: var(--color-slate-900);
+  --color-letra-suave: var(--color-slate-500);
+  --color-borde: var(--color-slate-200);
+  --color-etiqueta: var(--color-slate-100);
+  --color-destacada: var(--color-white);
+  --color-destacada-fondo: var(--color-sky-600);
+  --color-nota-alta: var(--color-green-600);
+  --color-nota-media: var(--color-amber-600);
+  --color-nota-baja: var(--color-red-600);
+
+  /* 2. Tipografía (fuentes del sistema: no hace falta internet) */
+  --font-titulos: ui-sans-serif, system-ui, sans-serif;
+  --font-cuerpo: ui-sans-serif, system-ui, sans-serif;
+
+  /* 3. Formas */
+  --radius-tarjeta: 0.5rem;
+}
+
+
+/* ---------- ESTILOS BASE ---------- */
+@layer base {
+  body {
+    @apply bg-fondo font-cuerpo text-letra;
+  }
+
+  h1,
+  h2,
+  h3 {
+    @apply font-titulos font-black tracking-tight uppercase;
+  }
+}

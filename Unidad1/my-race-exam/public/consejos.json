@@ -1,0 +1,50 @@
+[
+  {
+    "id": 1,
+    "topic": "Entrenamiento",
+    "title": "Aumenta los kilómetros poco a poco",
+    "text": "No subas más de un 10 % los kilómetros de una semana a la siguiente. El cuerpo necesita tiempo para adaptarse y así evitas lesiones."
+  },
+  {
+    "id": 2,
+    "topic": "Entrenamiento",
+    "title": "Respeta los días de descanso",
+    "text": "Descansar también es entrenar: los músculos se recuperan y se hacen más fuertes cuando no corres. Deja al menos un día libre a la semana."
+  },
+  {
+    "id": 3,
+    "topic": "Material",
+    "title": "Estrena las zapatillas antes de la carrera",
+    "text": "Nunca compitas con zapatillas nuevas. Úsalas en varios entrenamientos para comprobar que no te hacen rozaduras."
+  },
+  {
+    "id": 4,
+    "topic": "Material",
+    "title": "Elige la suela según el terreno",
+    "text": "En asfalto busca amortiguación; en trail, una suela con tacos que agarre en barro y piedra. En tierra sirven las dos."
+  },
+  {
+    "id": 5,
+    "topic": "Alimentación",
+    "title": "Nada nuevo el día de la carrera",
+    "text": "Desayuna lo mismo que antes de tus entrenamientos largos, unas tres horas antes de la salida. No pruebes geles ni bebidas que no conozcas."
+  },
+  {
+    "id": 6,
+    "topic": "Alimentación",
+    "title": "Bebe antes de tener sed",
+    "text": "Aprovecha los avituallamientos aunque no tengas sed, sobre todo si hace calor. Pequeños sorbos son mejor que mucha agua de golpe."
+  },
+  {
+    "id": 7,
+    "topic": "Día de la carrera",
+    "title": "No salgas demasiado rápido",
+    "text": "Con los nervios es fácil empezar por encima de tu ritmo. Corre los primeros kilómetros algo más lento de lo previsto y acelera al final."
+  },
+  {
+    "id": 8,
+    "topic": "Día de la carrera",
+    "title": "Llega con tiempo a la salida",
+    "text": "Recoge el dorsal el día antes si puedes y llega al menos 45 minutos antes. Tendrás tiempo para calentar, ir al baño y dejar la bolsa."
+  }
+]
