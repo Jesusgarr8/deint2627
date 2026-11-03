@@ -3,18 +3,19 @@ export const Colors = {
   primaryPressed: "#1e3a8a", // el botón mientras se pulsa
   background: "#ffffff", // fondo de la pantalla
   text: "#0f172a", // texto principal
-  textMuted: "#64748b", // texto secundario
+ // textMuted: "#64748b", // texto secundario
+  textOnPrimary: "#ffffff"
 };
 
 export const Spacing = {
   sm: 8,
-  md: 16,
-  lg: 24,
+  md: 20,
+  lg: 40,
 };
 
 export const FontSize = {
-  body: 16,
-  title: 24,
+  button: 20,
+  counter: 128,
 };
 
 export const Radius = {

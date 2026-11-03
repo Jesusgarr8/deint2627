@@ -1,45 +1,45 @@
-import { Colors } from "@/constants/theme";
-import { useState } from "react";
-import { Text, View, StyleSheet, Switch, Pressable, Alert } from "react-native";
+import { Pressable, StyleSheet, Text, View } from 'react-native'
+import React, { useState } from 'react'
+import { Colors, FontSize, Spacing } from '@/constants/theme'
+import Button from '@/components/Button';
+
 
 export default function Index() {
-   const [goldenPoint, setGoldenPoint] = useState(true);
 
-   const handleAlert = () => {
-    Alert.alert("Nuevo partido"
-  )
+  const [count, setCount] = useState<number>(0);
 
-    
-   }
+  const increment = () => {
+    setCount(count + 1);
+  }
+
+  const decrement = ()  =>  {
+    setCount(count -1);
+  }
+
+  const reset = () => {
+    setCount(0);
+  }
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Edit src/app/index.tsx to edit this screen.</Text>
-     
+      <Text style={styles.counter}>{count}</Text>
 
-      <Switch
-        value={goldenPoint}
-        onValueChange={setGoldenPoint}
-        trackColor={{ true: Colors.primary, false: Colors.primaryPressed }}
-        style={styles.switch}
-      />
-      <Pressable onPress = {handleAlert}>
-        <Text>Reiniciar</Text>
-      </Pressable>
+      <Button label='Reset' position='left' onPress={reset}></Button>
+      <Button label='+1' onPress={increment} onLongPress={reset}></Button>
+       <Button label='-1' position= 'center' onPress={decrement} onLongPress={reset}></Button>
     </View>
-  );
+  )
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: "center",
     justifyContent: "center",
+    alignItems: "center"
   },
-  title: {
-    color: Colors.text,
-    textAlign: "center",
+  counter: {
+    color: Colors.primary,
+    fontSize: FontSize.counter
+
   },
-  switch: {
-    alignSelf: "center"
-  }
-});
+
+})
