@@ -2,18 +2,22 @@ import { Pressable, StyleSheet, Text, View } from 'react-native'
 import React, { useState } from 'react'
 import { Colors, FontSize, Spacing } from '@/constants/theme'
 import Button from '@/components/Button';
-
+import * as Haptics from "expo-haptics";
 
 export default function Index() {
 
   const [count, setCount] = useState<number>(0);
 
   const increment = () => {
-    setCount(count + 1);
+    setCount(count + 1)
+    let newCount = count + 1
+    newCount % 10 == 0 && Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success)
   }
 
-  const decrement = ()  =>  {
-    setCount(count -1);
+  const decrement = () => {
+    if (count > 0) {
+      setCount(count - 1);
+    }
   }
 
   const reset = () => {
@@ -21,11 +25,13 @@ export default function Index() {
   }
   return (
     <View style={styles.container}>
-      <Text style={styles.counter}>{count}</Text>
+      <Text style={[styles.counter,
+      count >= 10 && styles.numberColor]}>
+        {count}</Text>
 
       <Button label='Reset' position='left' onPress={reset}></Button>
       <Button label='+1' onPress={increment} onLongPress={reset}></Button>
-       <Button label='-1' position= 'center' onPress={decrement} onLongPress={reset}></Button>
+      <Button label='-1' position='center' onPress={decrement} onLongPress={reset}></Button>
     </View>
   )
 }
@@ -39,7 +45,8 @@ const styles = StyleSheet.create({
   counter: {
     color: Colors.primary,
     fontSize: FontSize.counter
-
-  },
+  }, numberColor: {
+    color: Colors.highlight
+  }
 
 })

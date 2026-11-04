@@ -4,7 +4,8 @@ export const Colors = {
   background: "#ffffff", // fondo de la pantalla
   text: "#0f172a", // texto principal
  // textMuted: "#64748b", // texto secundario
-  textOnPrimary: "#ffffff"
+  textOnPrimary: "#ffffff",
+  highlight:"#059669"
 };
 
 export const Spacing = {
