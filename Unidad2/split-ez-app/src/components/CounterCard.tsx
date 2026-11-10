@@ -10,10 +10,12 @@ interface ICounterCardPrrops{
     text: string
     increment: () => void
     decrement: () => void
+    incrementLong: () =>  void
+    decrementLong: () =>  void
     count: number
 
 }
-export default function CounterCard({title, text, increment, decrement, count}: ICounterCardPrrops) {
+export default function CounterCard({title, text, increment, decrement, incrementLong, decrementLong, count}: ICounterCardPrrops) {
      
     
     return (
@@ -21,9 +23,9 @@ export default function CounterCard({title, text, increment, decrement, count}: 
         <View style={styles.containerTarjeta}>
             <Text>{title}</Text>
             <View style={styles.tarjeta} >
-                <Boton label='-' onPress={decrement} onLongPress={increment} position="left"></Boton>
+                <Boton label='-' onPress={decrement} onLongPress={decrementLong} position="left"></Boton>
                 <Text style={styles.texto}>{count}{text}</Text>
-                <Boton label='+' onPress={increment} onLongPress={increment} position="right"></Boton>
+                <Boton label='+' onPress={increment} onLongPress={incrementLong} position="right"></Boton>
 
             </View>
         </View>

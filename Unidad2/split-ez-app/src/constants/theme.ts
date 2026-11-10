@@ -3,6 +3,7 @@ export const Colors = {
   primaryPressed: "#1e3a8a", // el botón mientras se pulsa
   background: "#8400ff", // fondo de la pantalla
   tarjeta: "#6971e0",
+   resultado: "#0099ff",
   text: "#0f172a", // texto principal
  // textMuted: "#64748b", // texto secundario
   textOnPrimary: "#ffffff",
