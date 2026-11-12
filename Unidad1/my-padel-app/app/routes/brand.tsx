@@ -7,6 +7,7 @@ import { rackets } from '~/data/rackets'
 import FilterSelect from '~/components/FilterSelect'
 import NoResults from '~/components/NoResults'
 import SortSelect from '~/components/Sortselect'
+import VerRackets from '~/components/VerRacket'
 
 
 const noFilters = { shape: "", playStyle: "", level: "" };
@@ -27,6 +28,7 @@ export default function brand({ params }: Route.MetaArgs) {
   const [filters, setFilters] = useState(noFilters);
   const [sortBy, setSortBy] = useState("score");
   const brand = brands.find((b) => b.id === Number(params.brandId))
+  const [vistas, SetVistas] = useState("tres")
 
   const brandRacket = rackets.filter((racket) =>
     racket.brandId === brand?.id);
@@ -36,6 +38,10 @@ export default function brand({ params }: Route.MetaArgs) {
     (filters.playStyle === "" || racket.playStyle === filters.playStyle) &&
     (filters.level === "" || racket.level === filters.level)
   );
+
+  const BestRacket = [...brandRacket].sort((a, b) => b.score - a.score)[0]
+
+
 
   const sortedRackets = [...visibleRackets].sort((a, b) => {
     if (sortBy === "score") {
@@ -49,10 +55,17 @@ export default function brand({ params }: Route.MetaArgs) {
     if (sortBy === "price-desc") {
       return b.price - a.price;
     }
-
     return 0;
   });
-  //const visibleRackets = brandRackets.filter((racket) => /* condición */);
+
+
+  const verTres = sortedRackets.slice(0, 3)
+  const verTodas = sortedRackets.slice(0, sortedRackets.length)
+
+
+
+
+
   if (!brand) {
     return (
       <div className=''>
@@ -72,6 +85,7 @@ export default function brand({ params }: Route.MetaArgs) {
       <div className='flex flex-col '>
         <h1 className='text-2xl font-bold  text-letra '>{brand.name}</h1>
         <p className='text-letra-suave'>{brand.racketCount} palas - desde {brand.minPrice}€</p>
+        {brandRacket.length > 0 ? <p className='text-letra-suave'>{BestRacket.model} </p> : null}
         <div className='grid grid-cols-4 gap-4 w-full'>
           <FilterSelect id="shape" label="Forma" options={["Redonda", "Lágrima", "Diamante"]} value={filters.shape} onChange={(value) => setFilters({ ...filters, shape: value })} />
           <FilterSelect id="play-style" label="Estilo de juego" options={["Control", "Polivalente", "Potencia"]} value={filters.playStyle} onChange={(value) => setFilters({ ...filters, playStyle: value })} />
@@ -79,7 +93,17 @@ export default function brand({ params }: Route.MetaArgs) {
           <SortSelect value={sortBy} onChange={setSortBy} />
         </div>
         <p className="text-letra-suave gap-4 p-4" aria-live="polite">Mostrando {visibleRackets.length} de {brandRacket.length} palas</p>
-        {visibleRackets.length > 0 ? <RacketList visibleRackets={sortedRackets} /> : <NoResults onReset={() => setFilters(noFilters)} message="Ninguna pala de esta marca cumple los filtros" resetLabel="Quitar los filtros"></NoResults>}
+        {visibleRackets.length > 0 && vistas === "tres" && 
+        <><RacketList visibleRackets={verTres} /><VerRackets title="Ver todas" onChange={() => SetVistas("todas")} /></> 
+        }
+
+        {visibleRackets.length > 0 && vistas === "todas" &&
+         <><RacketList visibleRackets={verTodas} /><VerRackets title="Ver menos" onChange={() => SetVistas("tres")} /></> 
+         }
+
+        {visibleRackets.length === 0 && <NoResults onReset={() => setFilters(noFilters)} message="Ninguna pala de esta marca cumple los filtros" resetLabel="Quitar los filtros"></NoResults>}
+       
+
       </div>
 
     </div>

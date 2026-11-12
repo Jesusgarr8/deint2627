@@ -2,10 +2,10 @@ import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import { Colors, FontSize } from '@/constants/theme'
 
-interface IPropsResult{
+interface IPropsResult {
   resultado: string;
 }
-export default function ResultCard({resultado}: IPropsResult) {
+export default function ResultCard({ resultado }: IPropsResult) {
   return (
 
     <View style={styles.containerResultado}>

@@ -5,7 +5,7 @@ export function meta()  {
 }
 export default function contact() {
   return (
-    <div>
+    <div className='flex flex-col items-center'>
         <h1>Contacto</h1>
         <p>Datos de contacto: contacto@mypadelapp.es</p>
     </div>
