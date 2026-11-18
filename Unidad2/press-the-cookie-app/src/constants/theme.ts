@@ -21,6 +21,7 @@ export const FontSize = {
   title: 28,
   valores: 32,
   texto: 20,
+  contadores: 48,
 };
 
 export const Radius = {
