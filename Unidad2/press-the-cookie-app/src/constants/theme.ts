@@ -8,6 +8,7 @@ export const Colors = {
     highlight: "#34d399",
     white: "#ffffff",
     danger: "#dc2626",
+    overlay: "rgba(0, 0, 0, 0.55)"
 };
 
 export const Spacing = {

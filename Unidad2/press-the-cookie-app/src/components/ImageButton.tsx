@@ -1,55 +1,56 @@
-import { Pressable, StyleSheet, Text, View, Image, ImageSourcePropType } from 'react-native'
-import React from 'react'
+import { Image, ImageSourcePropType, Pressable, StyleSheet, View } from "react-native";
+import { Colors } from "@/constants/theme";
+import React from "react";
 
-interface ImageButtonsProps {
-    source: ImageSourcePropType,
-    size: number,
-    onPress: () => void,
-    disabled: boolean
-
+interface ImageButtonProps {
+  source: ImageSourcePropType;
+  size: number;
+  onPress: () => void;
+  disabled?: boolean;
 }
-export default function ImageButton({ source, size, onPress, disabled }: ImageButtonsProps) {
 
-    const handlePress = () => {
-        onPress?.();
-    }
+export default function ImageButton({
+  source,
+  size,
+  onPress,
+  disabled = false,
+}: ImageButtonProps) {
+  return (
+    <Pressable
+      onPress={onPress}
+      disabled={disabled}
+      style={({ pressed }) => [
+        styles.contenedor,
+        { width: size, height: size, borderRadius: size / 2 },
+        pressed && styles.pressed,
+      ]}
+    >
+      <Image source={source} style={styles.galleta} resizeMode="contain" />
 
-    return (
-        <View>
-            <Pressable
-                onPress={handlePress}
-                disabled={disabled}
-                style={styles.contenedor} >
-
-                <Image
-                    source={source}
-                    style={styles.galleta}
-                />
-
-                {disabled && <View style={styles.overlayOscuro} />}
-            </Pressable>
-
-        </View>
-    )
+      {disabled && (
+        <View style={[styles.overlayOscuro, { borderRadius: size / 2 }]} />
+      )}
+    </Pressable>
+  );
 }
 
 const styles = StyleSheet.create({
   contenedor: {
-    width: 220,
-    height: 220,
-    justifyContent: 'center',
-    alignItems: 'center',
-    position: 'relative',
-    borderRadius: 220 / 2, 
-    overflow: 'hidden',        
+    justifyContent: "center",
+    alignItems: "center",
+    // halo: sombra clara, sin desplazamiento
+    boxShadow: `0 0 30px 8px ${Colors.border}`,
   },
   galleta: {
-    width: '100%',
-    height: '100%',
+    width: "100%",
+    height: "100%",
   },
-  
   overlayOscuro: {
     ...StyleSheet.absoluteFill,
-    backgroundColor: 'rgba(0, 0, 0, 0.55)', 
+    backgroundColor: Colors.overlay, 
+  },
+  pressed: {
+    transform: [{ scale: 0.9 }],
+    opacity: 0.8,
   },
 });
