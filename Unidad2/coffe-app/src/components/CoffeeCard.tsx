@@ -1,21 +1,22 @@
-import { StyleSheet, Text, View, Image } from 'react-native'
-import React from 'react'
-import { ICoffee } from '@/types/coffee'
 import { Colors, FontSize, Radius } from '@/constants/theme'
+import { ICoffee } from '@/types/coffee'
+import { Image, StyleSheet, Text, View } from 'react-native'
 
-interface ICoffeCard {
-    coffee: ICoffee,
+interface ICoffeeCard {
+    coffee: ICoffee
 }
-export default function CoffeeCard({ coffee }: ICoffeCard) {
+
+export default function CoffeeCard({ coffee }: ICoffeeCard) {
     return (
         <View style={styles.card}>
-            <Image style={styles.image} source={{ uri: coffee.image }} resizeMode='cover' />
+            <Image style={styles.image} source={{ uri: coffee.image }} resizeMode="cover" />
 
-            <View>
+            <View style={styles.info}>
                 <Text style={styles.title}>{coffee.title}</Text>
-                <Text style={styles.ingredients}>{coffee.ingredients.map((ingredient) =>
-                    ingredient + ' - ')}</Text>
-                <Text>{coffee.description}</Text>
+                <Text style={styles.ingredients}>{coffee.ingredients.join(' - ')}</Text>
+                <Text style={styles.description} numberOfLines={2}>
+                    {coffee.description}
+                </Text>
             </View>
         </View>
     )
@@ -23,29 +24,40 @@ export default function CoffeeCard({ coffee }: ICoffeCard) {
 
 const styles = StyleSheet.create({
     card: {
-        flex: 1,
-        flexDirection: "row",
-        marginVertical: 5,
+        width: '90%',
+        alignSelf: 'center',
+        flexDirection: 'row',
+        alignItems: 'center',
         backgroundColor: Colors.card,
-        padding: 15,
-        gap: 10
+        padding: 8,
+        marginVertical: 5,
+        gap: 12,
+        borderRadius: 14,
     },
     image: {
-        height: 100,
-        width: 100,
-        borderRadius: Radius.md
+        height: 80,
+        width: 80,
+        borderRadius: Radius.md,
+        backgroundColor: Colors.chip,
+    },
+    info: {
+        flex: 1,
+        minWidth: 0,
+        gap: 4,
     },
     title: {
-        fontSize: FontSize.title,
-        fontWeight: "bold"
-    },
-    description: {
-        fontSize: FontSize.sm,
-        color: Colors.muted
+        fontSize: 20,
+        fontWeight: '700',
+        color: Colors.primary,
     },
     ingredients: {
         fontSize: FontSize.md,
+        fontWeight: '600',
         color: Colors.primary,
-        fontWeight: "semibold"
-    }
+    },
+    description: {
+        fontSize: FontSize.sm,
+        lineHeight: 17,
+        color: Colors.muted,
+    },
 })

@@ -1,4 +1,4 @@
- export interface ICoffee{
+export interface ICoffee {
     id: number,
     title: string,
     description: string,
@@ -6,6 +6,4 @@
     image: string
 }
 
-type CoffeeType = {
-    category:  'hot'| 'iced';
-}
+export type CoffeeType = 'hot' | 'iced';
