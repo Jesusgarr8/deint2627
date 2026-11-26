@@ -34,7 +34,7 @@ export default function Index() {
       setCountPrecio(countPrecio - 5)
   }
 
-  const [count, setCount] = useState<number>(1);
+  const [count, setCount] = useState<number>(2);
 
   const incrementPersona = () => {
     setCount(count + 1)
@@ -49,20 +49,24 @@ export default function Index() {
   }
 
   const decrementPersona = () => {
-    if (count > 1)
+    if (count > 2)
       setCount(count- 1)
   }
 
   const decrementLongPersona = () => {
-    if (count > 2)
+    if (count > 3)
       setCount(count- 2)
   }
 
   const calculoResultado = (countPrecio / count).toLocaleString("es-ES", { style: "currency", currency: "EUR" })
-  
+  const precioAlto = (countPrecio / count) > 20;
+
+  const valoresIniciales = count == 2 &&  countPrecio == 1;
   const handleReset = () => {
-    setCount(1)
-    setCountPrecio(1)
+    if(!valoresIniciales){
+      setCount(2)
+      setCountPrecio(1)
+    }
   }
   return (
     <SafeAreaView style={styles.screen}>
@@ -74,8 +78,8 @@ export default function Index() {
       <CounterCard title='Cuenta' count={countPrecio} text='€' increment={incrementPrecio} decrement={decrementPrecio} incrementLong={incrementLongPrecio} decrementLong={decrementLongPrecio}/>
       <CounterCard title='Persona' count={count} text='' increment={incrementPersona} decrement={decrementPersona} incrementLong={incrementLongPersona} decrementLong={decrementLongPersona} />
    
-    <ResultCard resultado = {calculoResultado}/> 
-    <Reiniciar onPress={handleReset}/>
+    <ResultCard color = {precioAlto ? Colors.red : Colors.textOnPrimary} resultado = { calculoResultado}/> 
+    <Reiniciar disabled={valoresIniciales} onPress={handleReset} />
       
 
     </SafeAreaView>
@@ -94,12 +98,12 @@ const styles = StyleSheet.create({
 
   },
   title: {
-    color: Colors.primary,
+    color: Colors.textOnPrimary,
     fontSize: FontSize.counter
   },
 
   texto: {
-    color: Colors.primary,
+    color: Colors.textOnPrimary,
     fontSize: FontSize.button
   }
 });

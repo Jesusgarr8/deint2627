@@ -1,14 +1,16 @@
 import { Colors, FontSize, Radius } from '@/constants/theme'
 import { ICoffee } from '@/types/coffee'
-import { Image, StyleSheet, Text, View } from 'react-native'
+import { Image, Pressable, StyleSheet, Text, View } from 'react-native'
 
 interface ICoffeeCard {
-    coffee: ICoffee
+    coffee: ICoffee,
+    onPress: () => void,
+    isPressed: boolean
 }
 
-export default function CoffeeCard({ coffee }: ICoffeeCard) {
+export default function CoffeeCard({ coffee, onPress, isPressed }: ICoffeeCard) {
     return (
-        <View style={styles.card}>
+        <Pressable style={[styles.card, isPressed && styles.pressed]} onPress={onPress}>
             <Image style={styles.image} source={{ uri: coffee.image }} resizeMode="cover" />
 
             <View style={styles.info}>
@@ -18,7 +20,7 @@ export default function CoffeeCard({ coffee }: ICoffeeCard) {
                     {coffee.description}
                 </Text>
             </View>
-        </View>
+        </Pressable>
     )
 }
 
@@ -60,4 +62,7 @@ const styles = StyleSheet.create({
         lineHeight: 17,
         color: Colors.muted,
     },
+    pressed: {
+        opacity: 0.9
+    }
 })

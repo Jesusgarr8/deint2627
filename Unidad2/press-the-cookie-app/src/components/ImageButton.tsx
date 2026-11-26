@@ -50,7 +50,7 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.overlay, 
   },
   pressed: {
-    transform: [{ scale: 0.9 }],
+    transform: [{ scale: 0.8 }],
     opacity: 0.8,
   },
 });

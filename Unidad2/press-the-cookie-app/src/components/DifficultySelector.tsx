@@ -34,6 +34,13 @@ export const DifficultySelector = ({
         onPress={() => onSelect('dificil')}
         disabled={disabled}
       />
+
+       <OptionButton
+        label="Extremo"
+        selected={difficulty === 'extremo'}
+        onPress={() => onSelect('extremo')}
+        disabled={disabled}
+      />
     </View>
   );
 };
@@ -41,6 +48,7 @@ export const DifficultySelector = ({
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
+    flexWrap: "wrap",
     justifyContent: 'center',
     gap: 10,
     marginVertical: 12,

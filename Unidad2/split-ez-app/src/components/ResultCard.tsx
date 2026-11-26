@@ -4,8 +4,9 @@ import { Colors, FontSize } from '@/constants/theme'
 
 interface IPropsResult {
   resultado: string;
+  color: string;
 }
-export default function ResultCard({ resultado }: IPropsResult) {
+export default function ResultCard({ resultado, color }: IPropsResult) {
   return (
 
     <View style={styles.containerResultado}>
@@ -13,7 +14,8 @@ export default function ResultCard({ resultado }: IPropsResult) {
       <View style={styles.tarjeta} >
 
         <Text style={styles.texto}>Resultado</Text>
-        <Text style={styles.texto}>{resultado}</Text>
+        <Text style={[styles.texto, {color: color}]}>{resultado}</Text>
+
       </View>
     </View>
 

@@ -1,5 +1,5 @@
 export const Colors = {
-  primary: "#ffffff", // botones y elementos destacados
+  primary: "#fb923c", // botones y elementos destacados
   primaryPressed: "#1e3a8a", // el botón mientras se pulsa
   background: "#8400ff", // fondo de la pantalla
   tarjeta: "#6971e0",
@@ -7,7 +7,8 @@ export const Colors = {
   text: "#0f172a", // texto principal
  // textMuted: "#64748b", // texto secundario
   textOnPrimary: "#ffffff",
-  highlight:"#059669"
+  highlight:"#059669",
+  red: "#ff0000"
 };
 
 export const Spacing = {

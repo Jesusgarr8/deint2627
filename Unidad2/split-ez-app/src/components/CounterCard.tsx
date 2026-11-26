@@ -49,7 +49,7 @@ containerTarjeta:{
     paddingVertical: 10
   },
   texto:{
-    color: Colors.primary,
+    color: Colors.textOnPrimary,
     fontSize: FontSize.valores
   }
 })

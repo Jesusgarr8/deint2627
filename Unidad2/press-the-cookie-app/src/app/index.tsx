@@ -4,19 +4,23 @@ import { DifficultySelector } from "@/components/DifficultySelector";
 import ImageButton from "@/components/ImageButton";
 import StatBox from "@/components/StatBox";
 import { Difficulty, GAME_TIME } from "@/constants/game";
-import { Colors, Spacing } from "@/constants/theme";
+import { Colors, FontSize, Spacing } from "@/constants/theme";
 import * as Haptics from "expo-haptics";
 import { StatusBar } from "expo-status-bar";
 import React, { useEffect, useState } from "react";
-import { Alert, StyleSheet, View } from "react-native";
+import { Alert, StyleSheet, View, Text } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function Index() {
   const [clicks, setClicks] = useState<number>(0);
   const [timeLeft, setTimeLeft] = useState(GAME_TIME["normal"]);
+  const [cuentaAtras, setCuentaAtras] = useState(3);
   const [isPlaying, setIsPlaying] = useState(false);
   const [difficulty, setDifficulty] = useState<Difficulty>("normal");
+  const [record, setRecord] = useState(0);
 
+  const seconds = (GAME_TIME[difficulty]);
+  let listaPartidas = [];
   const increment = () => {
     if (!isPlaying) return;
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
@@ -40,7 +44,16 @@ export default function Index() {
     if (isPlaying) {
       handleStop();
     } else {
+      setCuentaAtras(3)
+      
+         const interval = setInterval(() => {
+      setCuentaAtras((prev) => Math.max(prev - 1, 0));
+    }, 1000);
+
+    if(cuentaAtras <= 0){
       handleStart();
+
+    }
     }
   };
 
@@ -49,7 +62,7 @@ export default function Index() {
     setTimeLeft(GAME_TIME[newDifficulty]);
   };
 
-  
+
   useEffect(() => {
     if (!isPlaying) return;
 
@@ -60,10 +73,15 @@ export default function Index() {
     return () => clearInterval(interval);
   }, [isPlaying]);
 
- 
+
+
   useEffect(() => {
     if (isPlaying && timeLeft === 0) {
       setIsPlaying(false);
+      if (clicks > record) {
+        setRecord(clicks)
+      }
+      listaPartidas = [clicks, seconds]
       Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
       Alert.alert("¡Tiempo!", `Has pulsado la galleta ${clicks} veces.`);
     }
@@ -77,7 +95,7 @@ export default function Index() {
         logo={require("@/assets/images/boton.png")}
         title="Press the cookie"
       />
-
+        <Text style={styles.cuentaAtras}> Cuenta atras: {cuentaAtras}</Text>
       <DifficultySelector
         difficulty={difficulty}
         onSelect={handleSelectDifficulty}
@@ -109,6 +127,9 @@ export default function Index() {
           valueColor={Colors.highlight}
         />
       </View>
+
+      <Text style={styles.texto}>Record {record}</Text>
+    
     </SafeAreaView>
   );
 }
@@ -125,4 +146,12 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     gap: Spacing.lg,
   },
+  texto: {
+    color: Colors.text,
+    fontSize: FontSize.texto
+  },
+  cuentaAtras:{
+    color: Colors.danger,
+    fontSize: FontSize.texto
+  }
 });
